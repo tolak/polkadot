@@ -287,6 +287,7 @@ impl<Call> TryFrom<Instruction<Call>> for Order<Call> {
 				let debt = Option::<u64>::from(weight_limit).ok_or(())?;
 				BuyExecution { fees, weight, debt, halt_on_error, instructions }
 			},
+			Instruction::ClearOrigin => Noop,
 			_ => return Err(()),
 		})
 	}
